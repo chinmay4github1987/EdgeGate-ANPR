@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Register vehicle</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; background: #F3F5F8; color: #0F172A; font-family: 'IBM Plex Sans', sans-serif; display: flex; flex-direction: column">
+
+<header style="padding: 12px 12px 8px; display: flex; align-items: center; gap: 4px">
+<a href="Vehicles.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: #0F172A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700">Register vehicle</h1>
+</header>
+
+<form style="padding: 8px 20px 20px; display: flex; flex-direction: column; gap: 18px">
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="plate" style="font-size: 13px; font-weight: 600">Plate number</label>
+<input id="plate" value="ka01ab1234" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 2px solid #0F766E; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #0F172A; outline: none">
+<div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DCE1E8">
+<div style="display: flex; align-items: stretch; border: 2px solid #0F172A; border-radius: 6px; overflow: hidden">
+<div style="width: 12px; background: #1D4ED8"></div>
+<div style="padding: 4px 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 16px; letter-spacing: 1px">KA 01 AB 1234</div>
+</div>
+<span style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: #14532D; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Valid · Karnataka</span>
+</div>
+</div>
+
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="font-size: 13px; font-weight: 600; padding: 0; margin-bottom: 8px">Category</legend>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<label style="height: 44px; border-radius: 12px; background: #0F172A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600"><input type="radio" name="cat" checked style="accent-color: #FFFFFF">Resident</label>
+<label style="height: 44px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DCE1E8; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 500"><input type="radio" name="cat">Staff</label>
+<label style="height: 44px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DCE1E8; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 500"><input type="radio" name="cat">Visitor</label>
+</div>
+</fieldset>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="owner" style="font-size: 13px; font-weight: 600">Owner name</label>
+<input id="owner" value="Asha Rao" style="height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid #DCE1E8; background: #FFFFFF; font-family: inherit; font-size: 15px; color: #0F172A">
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="unit" style="font-size: 13px; font-weight: 600">Flat / unit</label>
+<input id="unit" value="B-402" style="height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid #DCE1E8; background: #FFFFFF; font-family: inherit; font-size: 15px; color: #0F172A">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="phone" style="font-size: 13px; font-weight: 600">Phone <span style="font-weight: 400; color: #4B5565">(optional)</span></label>
+<input id="phone" type="tel" placeholder="+91" style="height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid #DCE1E8; background: #FFFFFF; font-family: inherit; font-size: 15px; color: #0F172A">
+</div>
+</div>
+
+<label style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DCE1E8">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">Blacklist this plate</span><span style="font-size: 12px; color: #4B5565">Gate will deny and sound the alarm</span></span>
+<input type="checkbox" role="switch" style="width: 22px; height: 22px; accent-color: #B91C1C">
+</label>
+
+<div style="display: flex; gap: 10px; margin-top: 8px">
+<a href="Vehicles.dc.html" style="flex-grow: 1; height: 52px; border-radius: 14px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #0F172A; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">Cancel</a>
+<a href="Vehicles.dc.html" style="flex-grow: 2; height: 52px; border-radius: 14px; background: #0F766E; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">Save vehicle</a>
+</div>
+</form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# YOLO dataset config – single class "plate".
+# Expected layout (YOLO txt labels: class cx cy w h, normalised):
+#   datasets/plates/images/{train,val,test}/*.jpg
+#   datasets/plates/labels/{train,val,test}/*.txt
+# Sources: public Indian ANPR datasets (check each licence) + your own gate footage
+# (get consent / signage; blur faces before sharing any data).
+path: datasets/plates
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: plate

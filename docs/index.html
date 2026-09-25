@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EdgeGate ANPR</title>
+<meta name="description" content="How EdgeGate turns an Android phone into an offline number-plate reader for society, campus and parking gates.">
+<meta name="theme-color" content="#0f766e">
+<style>
+  :root {
+    --bg: #f3f5f9; --card: #ffffff; --ink: #0f172a; --muted: #475569; --line: #e2e8f0;
+    --brand: #0f766e; --brand-wash: #ccece6; --deny: #b91c1c; --deny-wash: #fde2e2;
+    --visitor: #1e40af; --visitor-wash: #dbe5ff; --plate: #fffbea; --plate-line: #0f172a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1120; --card: #131c2e; --ink: #e5eaf3; --muted: #9aa7bd; --line: #25324a;
+      --brand: #2dd4bf; --brand-wash: #113a37; --deny: #f87171; --deny-wash: #3b1518;
+      --visitor: #93b4ff; --visitor-wash: #1a2748; --plate: #fef3c7; --plate-line: #0f172a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1120; --card: #131c2e; --ink: #e5eaf3; --muted: #9aa7bd; --line: #25324a;
+    --brand: #2dd4bf; --brand-wash: #113a37; --deny: #f87171; --deny-wash: #3b1518;
+    --visitor: #93b4ff; --visitor-wash: #1a2748; --plate: #fef3c7; --plate-line: #0f172a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 2rem; line-height: 1.15; margin: 8px 0 12px; letter-spacing: -0.02em; }
+  h2 { font-size: 1.35rem; margin: 40px 0 12px; letter-spacing: -0.01em; }
+  h3 { font-size: 1.05rem; margin: 0 0 4px; }
+  p { margin: 0 0 12px; }
+  .muted { color: var(--muted); }
+  .eyebrow { color: var(--brand); font-weight: 600; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px; }
+  .pill { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 6px 12px; font-size: .9rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; counter-reset: s; }
+  .steps li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+  .steps li::before {
+    counter-increment: s; content: counter(s);
+    width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--brand-wash); color: var(--brand); font-weight: 700;
+  }
+  .steps p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .plate {
+    display: inline-block; font: 700 1.05rem/1 ui-monospace, "SFMono-Regular", Consolas, monospace;
+    letter-spacing: .12em; background: var(--plate); color: #0f172a; border: 2px solid var(--plate-line);
+    border-radius: 6px; padding: 6px 10px; white-space: nowrap;
+  }
+  .fix { display: grid; gap: 8px; }
+  .fix-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .arrow { color: var(--muted); }
+  .decisions { display: grid; gap: 10px; }
+  .decision { border-radius: 14px; padding: 12px 14px; }
+  .decision b { display: block; }
+  .allow { background: var(--brand-wash); }
+  .allow b { color: var(--brand); }
+  .visitor { background: var(--visitor-wash); }
+  .visitor b { color: var(--visitor); }
+  .deny { background: var(--deny-wash); }
+  .deny b { color: var(--deny); }
+  .shots { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+  .shots figure { margin: 0; flex: 0 0 62%; max-width: 240px; scroll-snap-align: start; }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; border: 1px solid var(--line); }
+  .shots figcaption { font-size: .85rem; color: var(--muted); margin-top: 6px; text-align: center; }
+  .grid2 { display: grid; gap: 10px; }
+  @media (min-width: 560px) { .grid2 { grid-template-columns: 1fr 1fr; } .decisions { grid-template-columns: 1fr 1fr 1fr; } }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: .9em; background: var(--brand-wash); padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; overflow-x: auto; font-size: .85rem; }
+  pre code { background: none; padding: 0; }
+  a { color: var(--brand); }
+  .cta { display: inline-block; background: var(--brand); color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 12px; font-weight: 600; min-height: 44px; }
+  :root[data-theme="dark"] .cta, :root:not([data-theme="light"]) .cta { color: #fff; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cta { color: #04201d; } }
+  footer { margin-top: 48px; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">EdgeGate ANPR</div>
+  <h1>A phone at the gate that reads number plates without the internet</h1>
+  <p class="muted">Mount an Android phone at a society, campus or parking gate. It reads each vehicle's plate with AI running on the phone, checks it against your list of registered vehicles, tells the guard what to do, and keeps a digital gate register.</p>
+  <div class="pills">
+    <span class="pill">Works offline</span>
+    <span class="pill">No video leaves the phone</span>
+    <span class="pill">No cloud fees</span>
+    <span class="pill">Indian plates</span>
+  </div>
+
+  <h2>What happens when a car arrives</h2>
+  <ol class="steps card">
+    <li><div><h3>The camera watches the lane</h3><p>The phone looks at 10–30 frames every second.</p></div></li>
+    <li><div><h3>AI finds the plate</h3><p>A small detection model (YOLOv8n on LiteRT) draws a box around the plate, using the phone's GPU when it can. Without a model file, the whole frame goes to OCR instead.</p></div></li>
+    <li><div><h3>The characters are read</h3><p>Google ML Kit text recognition reads the cropped plate, on the device.</p></div></li>
+    <li><div><h3>Common mistakes are fixed</h3><p>Indian plates follow a fixed pattern, so the app knows which positions must be letters and which must be digits, and corrects look-alikes such as O/0 and B/8.</p></div></li>
+    <li><div><h3>Several frames must agree</h3><p>One blurry frame can't trigger a decision. The same plate has to be read in at least 3 frames within 2 seconds.</p></div></li>
+    <li><div><h3>The gate rules decide</h3><p>The app looks up the plate and shows the guard Allow, Visitor or Deny, then writes the event to the gate log.</p></div></li>
+  </ol>
+
+  <h2>How a misread gets fixed</h2>
+  <div class="card fix">
+    <div class="fix-row"><span class="muted">OCR saw</span> <span class="plate">KA O1 A8 I234</span></div>
+    <div class="fix-row"><span class="arrow">↓</span> <span class="muted">digits go in the RTO and number slots</span></div>
+    <div class="fix-row"><span class="muted">Stored as</span> <span class="plate">KA 01 AB 1234</span></div>
+    <p class="muted" style="margin:4px 0 0">Bharat-series plates like <span class="plate" style="font-size:.85rem;padding:3px 6px">22 BH 1234 AA</span> are supported too.</p>
+  </div>
+
+  <h2>What the guard sees</h2>
+  <div class="decisions">
+    <div class="decision allow"><b>Allow</b>Resident or staff vehicle. Shows the owner and flat. Open the barrier.</div>
+    <div class="decision visitor"><b>Visitor</b>Pre-registered visitor or an unknown plate. Allowed, logged, and the guard asks for the flat number.</div>
+    <div class="decision deny"><b>Deny</b>Blocked vehicle. An alarm sounds, with buttons to silence it and call the supervisor.</div>
+  </div>
+  <p class="muted" style="margin-top:12px">If the same plate is confirmed again within the cooldown (60 seconds by default), it's ignored, so a car waiting at the barrier isn't logged twice.</p>
+
+  <h2>Entry or exit?</h2>
+  <div class="grid2">
+    <div class="card"><h3>One phone per lane</h3><p class="muted" style="margin:0">Set the phone to Entry only or Exit only. This is the most reliable setup.</p></div>
+    <div class="card"><h3>One phone, shared gate</h3><p class="muted" style="margin:0">In Auto mode, a vehicle that's already inside is logged as an exit, and every other vehicle as an entry.</p></div>
+  </div>
+
+  <h2>Screens</h2>
+  <div class="shots">
+    <figure><img src="img/home.png" alt="Home screen showing entries, exits, vehicles inside now, alerts and traffic by hour" loading="lazy"><figcaption>Home: today at the gate</figcaption></figure>
+    <figure><img src="img/gate-log.png" alt="Gate log listing a visitor entry with search and filters" loading="lazy"><figcaption>Gate log, with CSV export</figcaption></figure>
+    <figure><img src="img/vehicles.png" alt="Vehicles screen with filters and an Add vehicle button" loading="lazy"><figcaption>Vehicles: residents, staff and visitors</figcaption></figure>
+  </div>
+
+  <h2>Privacy</h2>
+  <div class="card">
+    <p>The app doesn't request internet permission. Camera frames are processed in memory and thrown away. Only the plate text, the time and the decision are saved, and the register is excluded from cloud backups.</p>
+    <p class="muted" style="margin:0">Old log entries are deleted automatically after the retention period you set (90 days by default).</p>
+  </div>
+
+  <h2>Set up a gate</h2>
+  <ol class="steps card">
+    <li><div><h3>Install the app</h3><p>Android 8.0 or newer. Build it from the source code below.</p></div></li>
+    <li><div><h3>Name the gate and pick a mode</h3><p>In Settings, choose Entry only, Exit only or Auto, and add the supervisor's phone number.</p></div></li>
+    <li><div><h3>Register vehicles</h3><p>Add residents, staff and expected visitors. Block any vehicle that shouldn't be let in.</p></div></li>
+    <li><div><h3>Mount the phone</h3><p>Point it at the lane at about plate height, where cars slow down. Plug it in to charge.</p></div></li>
+  </ol>
+
+  <h2>For developers</h2>
+  <pre><code>git clone https://github.com/chinmay4github1987/EdgeGate-ANPR.git
+cd EdgeGate-ANPR
+./gradlew :core:test        # rules, voting and plate parsing
+./gradlew :app:installDebug # phone connected over USB</code></pre>
+  <p><a class="cta" href="https://github.com/chinmay4github1987/EdgeGate-ANPR">View source on GitHub</a></p>
+  <p class="muted">Full details: <a href="https://github.com/chinmay4github1987/EdgeGate-ANPR/blob/main/docs/PROJECT_DOCUMENTATION.md">Project documentation</a></p>
+
+  <footer>EdgeGate ANPR · Kotlin, Jetpack Compose, CameraX, LiteRT, ML Kit, Room</footer>
+</main>
+</body>
+</html>

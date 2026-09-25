@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<style>body{margin:0}a{color:#0B5F58}a:hover{color:#084A44}</style>
+</helmet>
+<div style="width: 390px; height: 1180px; box-sizing: border-box; background: #F3F5F8; color: #0F172A; font-family: 'IBM Plex Sans', sans-serif; display: flex; flex-direction: column">
+
+<header style="padding: 20px 20px 12px; display: flex; justify-content: space-between; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 13px; color: #4B5565; font-weight: 500">Main Gate · Tower A entrance</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.5px">Today</h1>
+</div>
+<a href="Settings.dc.html" aria-label="Settings" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; border: 1px solid #DCE1E8; display: flex; align-items: center; justify-content: center; color: #0F172A">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+</a>
+</header>
+
+<div style="padding: 0 20px 16px; display: flex; gap: 8px; flex-wrap: wrap">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #DCF3E4; color: #14532D; font-size: 12px; font-weight: 600"><span style="width: 8px; height: 8px; border-radius: 4px; background: #15803D"></span>Camera live</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DCE1E8; color: #334155; font-size: 12px; font-weight: 600">On-device · LiteRT GPU</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DCE1E8; color: #334155; font-size: 12px; font-weight: 600">Offline ready</span>
+</div>
+
+<section aria-label="Key figures" style="padding: 0 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #4B5565; font-weight: 500">Entries</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">142</span>
+<span style="font-size: 12px; color: #15803D; font-weight: 600">+12% vs last Fri</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #4B5565; font-weight: 500">Exits</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">128</span>
+<span style="font-size: 12px; color: #4B5565; font-weight: 500">since 00:00</span>
+</div>
+<div style="background: #0F172A; color: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #C7D0DD; font-weight: 500">Inside now</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">57</span>
+<span style="font-size: 12px; color: #C7D0DD">of 212 registered</span>
+</div>
+<div style="background: #FDE8E8; border: 1px solid #F5B5B5; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #7F1D1D; font-weight: 500">Alerts</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: #991B1B">1</span>
+<span style="font-size: 12px; color: #7F1D1D; font-weight: 500">Blacklisted · 09:12</span>
+</div>
+</section>
+
+<section aria-label="Traffic by hour" style="margin: 16px 20px 0; background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600">Traffic by hour</h2>
+<span style="font-size: 12px; color: #4B5565">Peak 09:00 · 31 vehicles</span>
+</div>
+<div style="height: 120px; display: flex; align-items: flex-end; gap: 4px; border-bottom: 1px solid #DCE1E8">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="17">
+<div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 120px">
+<sc-if value="{{b.peak}}" hint-placeholder-val="{{ false }}"><div style="height: {{b.h}}px; background: #0F766E; border-radius: 4px 4px 0 0"></div></sc-if>
+<sc-if value="{{b.normal}}" hint-placeholder-val="{{ true }}"><div style="height: {{b.h}}px; background: #9FD3CC; border-radius: 4px 4px 0 0"></div></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 11px; color: #4B5565; font-family: 'IBM Plex Mono', monospace">
+<span>06</span><span>10</span><span>14</span><span>18</span><span>22</span>
+</div>
+</section>
+
+<section aria-label="Recent activity" style="margin: 16px 20px 0; background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; padding: 8px 0">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 16px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600">Recent activity</h2>
+<a href="Log.dc.html" style="font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 0">View log</a>
+</div>
+<sc-for list="{{recent}}" as="r" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-top: 1px solid #EEF1F5">
+<div style="display: inline-flex; align-items: stretch; border: 1.5px solid #0F172A; border-radius: 5px; background: #FFFFFF; overflow: hidden; flex-shrink: 0">
+<div style="width: 10px; background: #1D4ED8"></div>
+<div style="padding: 3px 8px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; letter-spacing: 0.5px">{{r.plate}}</div>
+</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0">
+<span style="font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.who}}</span>
+<span style="font-size: 12px; color: #4B5565">{{r.dir}} · {{r.time}}</span>
+</div>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.4px; padding: 4px 8px; border-radius: 6px; background: {{r.bg}}; color: {{r.fg}}">{{r.tag}}</span>
+</div>
+</sc-for>
+</section>
+
+<section aria-label="AI engine health" style="margin: 16px 20px 0; background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600">AI engine</h2>
+<span style="font-size: 12px; color: #4B5565">plate_detector_int8 · 3.1 MB</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">18<span style="font-size: 12px; color: #4B5565"> ms</span></span><span style="font-size: 11px; color: #4B5565">detect p50</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">41<span style="font-size: 12px; color: #4B5565"> ms</span></span><span style="font-size: 11px; color: #4B5565">OCR p50</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">92<span style="font-size: 12px; color: #4B5565"> ms</span></span><span style="font-size: 11px; color: #4B5565">frame p90</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">11</span><span style="font-size: 11px; color: #4B5565">fps</span></div>
+</div>
+<span style="font-size: 11px; color: #4B5565">Sample values for the mockup. The app shows live figures.</span>
+</section>
+
+<div style="flex-grow: 1"></div>
+<dc-import name="NavBar" active="home" hint-size="390px,80px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const counts = [4, 9, 22, 31, 18, 10, 8, 12, 9, 7, 8, 14, 24, 27, 15, 9, 5];
+    const max = Math.max(...counts);
+    const bars = counts.map((c) => ({ h: Math.round((c / max) * 112), peak: c === max, normal: c !== max }));
+    const tags = {
+      allow: { tag: 'ALLOW', bg: '#DCF3E4', fg: '#14532D' },
+      visitor: { tag: 'VISITOR', bg: '#DCE7FB', fg: '#1E3A8A' },
+      deny: { tag: 'DENY', bg: '#FDE8E8', fg: '#991B1B' },
+    };
+    const recent = [
+      { plate: 'KA 01 AB 1234', who: 'Asha Rao · B-402', dir: 'Entry', time: '10:42', ...tags.allow },
+      { plate: 'KA 05 MX 7788', who: 'Unregistered · Delivery', dir: 'Entry', time: '10:39', ...tags.visitor },
+      { plate: '22 BH 1234 AA', who: 'Vikram S · C-110', dir: 'Exit', time: '10:31', ...tags.allow },
+      { plate: 'MH 12 DE 0045', who: 'Blacklisted vehicle', dir: 'Entry attempt', time: '09:12', ...tags.deny },
+    ];
+    return { bars, recent };
+  }
+}
+</script>
+</body>
+</html>

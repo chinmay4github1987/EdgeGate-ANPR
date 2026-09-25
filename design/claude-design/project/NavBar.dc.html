@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bottom navigation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<nav aria-label="Main" style="width: 390px; height: 80px; box-sizing: border-box; background: #FFFFFF; border-top: 1px solid #DCE1E8; display: flex; justify-content: space-around; align-items: center; padding: 6px 8px 10px; font-family: 'IBM Plex Sans', sans-serif; color: #0F172A">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<a href="{{t.href}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 72px; text-decoration: none; color: #4B5565; font-size: 12px; font-weight: 500">
+<sc-if value="{{t.active}}" hint-placeholder-val="{{ false }}">
+<span style="width: 60px; height: 32px; border-radius: 16px; background: #CCEBE7; display: flex; align-items: center; justify-content: center; color: #0B5F58">
+<sc-if value="{{t.home}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg></sc-if>
+<sc-if value="{{t.scan}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path><rect x="7" y="10" width="10" height="4" rx="1"></rect></svg></sc-if>
+<sc-if value="{{t.log}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg></sc-if>
+<sc-if value="{{t.car}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0M3 17v-4l2-5h14l2 5v4"></path><path d="M3 13h18"></path></svg></sc-if>
+</span>
+<span style="color: #0B5F58; font-weight: 600">{{t.label}}</span>
+</sc-if>
+<sc-if value="{{t.inactive}}" hint-placeholder-val="{{ true }}">
+<span style="width: 60px; height: 32px; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{t.home}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg></sc-if>
+<sc-if value="{{t.scan}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path><rect x="7" y="10" width="10" height="4" rx="1"></rect></svg></sc-if>
+<sc-if value="{{t.log}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg></sc-if>
+<sc-if value="{{t.car}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0M3 17v-4l2-5h14l2 5v4"></path><path d="M3 13h18"></path></svg></sc-if>
+</span>
+<span>{{t.label}}</span>
+</sc-if>
+</a>
+</sc-for>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["home","scan","log","vehicles"],"default":"home"},"$preview":{"width":390,"height":80}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active ?? 'home';
+    const defs = [
+      { id: 'home', label: 'Home', href: 'Main.dc.html' },
+      { id: 'scan', label: 'Scan', href: 'Scan.dc.html' },
+      { id: 'log', label: 'Gate log', href: 'Log.dc.html' },
+      { id: 'vehicles', label: 'Vehicles', href: 'Vehicles.dc.html' },
+    ];
+    return {
+      tabs: defs.map((d) => ({
+        ...d,
+        active: d.id === active,
+        inactive: d.id !== active,
+        home: d.id === 'home',
+        scan: d.id === 'scan',
+        log: d.id === 'log',
+        car: d.id === 'vehicles',
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

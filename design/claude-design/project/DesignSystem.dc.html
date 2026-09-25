@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EdgeGate design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 880px; height: 1180px; box-sizing: border-box; background: #FFFFFF; color: #0F172A; font-family: 'IBM Plex Sans', sans-serif; padding: 48px; display: flex; flex-direction: column; gap: 36px">
+
+<header style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 1px; color: #0F766E">EDGEGATE · DESIGN SYSTEM</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letter-spacing: -1px">Security console, calm by default</h1>
+<p style="margin: 0; font-size: 15px; color: #4B5565; max-width: 640px; line-height: 1.5">Cool neutral ground, one teal accent for actions, and three status colours reserved for gate decisions. Status colours differ in lightness as well as hue, and each one is always paired with an icon and a word.</p>
+</header>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Colour</h2>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{swatches}}" as="s" hint-placeholder-count="12">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="height: 64px; border-radius: 12px; background: {{s.hex}}; border: 1px solid #DCE1E8"></div>
+<span style="font-size: 13px; font-weight: 600">{{s.name}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #4B5565">{{s.hex}} · {{s.use}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Type</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">Space Grotesk</span><span style="font-size: 12px; color: #4B5565">Display · titles, KPIs · 700 / 600</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 24px; font-weight: 500">IBM Plex Sans</span><span style="font-size: 12px; color: #4B5565">Body · labels, lists · 400 / 500 / 600</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 600">KA 01 AB 1234</span><span style="font-size: 12px; color: #4B5565">Mono · plates, timings, metrics</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Plate chip</h2>
+<div style="display: flex; gap: 24px; align-items: center">
+<div style="display: flex; align-items: stretch; border: 2.5px solid #0F172A; border-radius: 8px; overflow: hidden">
+<div style="width: 18px; background: #1D4ED8; color: #FFFFFF; font-size: 8px; font-weight: 700; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px">IND</div>
+<div style="padding: 8px 16px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 28px; letter-spacing: 2px">KA 01 AB 1234</div>
+</div>
+<div style="display: flex; align-items: stretch; border: 2px solid #0F172A; border-radius: 6px; overflow: hidden">
+<div style="width: 12px; background: #1D4ED8"></div>
+<div style="padding: 4px 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 16px; letter-spacing: 1px">22 BH 1234 AA</div>
+</div>
+<div style="display: flex; align-items: stretch; border: 1.5px solid #0F172A; border-radius: 5px; overflow: hidden">
+<div style="width: 10px; background: #1D4ED8"></div>
+<div style="padding: 3px 8px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px">DL 3C AB 1234</div>
+</div>
+</div>
+<span style="font-size: 13px; color: #4B5565">Large on the decision sheet, medium in forms, small in lists. The blue strip echoes a high-security registration plate so guards recognise it at a glance.</span>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Decision states</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<div style="border-radius: 16px; border: 1px solid #BFE5CC; background: #F0FAF4; padding: 16px; display: flex; gap: 10px; align-items: center"><span style="width: 36px; height: 36px; border-radius: 18px; background: #15803D; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span><div style="display: flex; flex-direction: column"><span style="font-weight: 700; color: #14532D">Allow</span><span style="font-size: 12px; color: #14532D">Resident or staff</span></div></div>
+<div style="border-radius: 16px; border: 1px solid #BFD0F5; background: #F1F5FE; padding: 16px; display: flex; gap: 10px; align-items: center"><span style="width: 36px; height: 36px; border-radius: 18px; background: #1D4ED8; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><div style="display: flex; flex-direction: column"><span style="font-weight: 700; color: #1E3A8A">Visitor</span><span style="font-size: 12px; color: #1E3A8A">Logged · ask purpose</span></div></div>
+<div style="border-radius: 16px; border: 1px solid #F5B5B5; background: #FEF2F2; padding: 16px; display: flex; gap: 10px; align-items: center"><span style="width: 36px; height: 36px; border-radius: 18px; background: #B91C1C; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span><div style="display: flex; flex-direction: column"><span style="font-weight: 700; color: #991B1B">Deny</span><span style="font-size: 12px; color: #991B1B">Blacklisted · alarm</span></div></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Controls</h2>
+<div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+<button type="button" style="height: 48px; padding: 0 20px; border-radius: 12px; border: none; background: #0F766E; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600">Primary</button>
+<button type="button" style="height: 48px; padding: 0 20px; border-radius: 12px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #0F172A; font-family: inherit; font-size: 14px; font-weight: 600">Secondary</button>
+<button type="button" style="height: 48px; padding: 0 20px; border-radius: 12px; border: none; background: #B91C1C; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600">Destructive</button>
+<button type="button" style="height: 36px; padding: 0 14px; border-radius: 18px; border: none; background: #0F172A; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600">Filter · on</button>
+<button type="button" style="height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid #DCE1E8; background: #FFFFFF; color: #0F172A; font-family: inherit; font-size: 13px; font-weight: 500">Filter · off</button>
+</div>
+<span style="font-size: 13px; color: #4B5565">Radii 12 (controls), 16 (cards), 24 (sheets). Spacing on a 4 px grid, 20 px screen gutters. Touch targets at least 44 px.</span>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":880,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      swatches: [
+        { name: 'Ink', hex: '#0F172A', use: 'text' },
+        { name: 'Slate', hex: '#4B5565', use: 'secondary' },
+        { name: 'Line', hex: '#DCE1E8', use: 'borders' },
+        { name: 'Ground', hex: '#F3F5F8', use: 'background' },
+        { name: 'Night', hex: '#0B1220', use: 'camera' },
+        { name: 'Teal', hex: '#0F766E', use: 'actions' },
+        { name: 'Teal tint', hex: '#CCEBE7', use: 'selection' },
+        { name: 'Allow', hex: '#15803D', use: 'status' },
+        { name: 'Visitor', hex: '#1D4ED8', use: 'status' },
+        { name: 'Deny', hex: '#B91C1C', use: 'status' },
+        { name: 'Staff', hex: '#B45309', use: 'category' },
+        { name: 'Surface', hex: '#FFFFFF', use: 'cards' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "AddVehicle.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "title": "Register vehicle",
+      "w": 390,
+      "x": 3310,
+      "y": 0
+    },
+    "DesignSystem.dc.html": {
+      "h": 1180,
+      "title": "Design system",
+      "w": 880,
+      "x": 0,
+      "y": 0
+    },
+    "Log.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "title": "Gate log",
+      "w": 390,
+      "x": 2370,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 1180,
+      "is_interactive": true,
+      "title": "Dashboard",
+      "w": 390,
+      "x": 960,
+      "y": 0
+    },
+    "NavBar.dc.html": {
+      "h": 80,
+      "is_interactive": true,
+      "title": "Component · bottom nav",
+      "w": 390,
+      "x": 960,
+      "y": 1300
+    },
+    "Scan.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Scan · allow",
+      "w": 390,
+      "x": 1430,
+      "y": 0
+    },
+    "ScanDeny.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "Scan · blacklist alert",
+      "w": 390,
+      "x": 1900,
+      "y": 0
+    },
+    "Settings.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "title": "Settings",
+      "w": 390,
+      "x": 3780,
+      "y": 0
+    },
+    "Vehicles.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "title": "Vehicles",
+      "w": 390,
+      "x": 2840,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-25T12:50:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "title": {
+      "kind": "title1",
+      "maxW": 4170,
+      "text": "EdgeGate ANPR — app UI",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "DesignSystem.dc.html",
+    "Main.dc.html",
+    "Scan.dc.html",
+    "ScanDeny.dc.html",
+    "Log.dc.html",
+    "Vehicles.dc.html",
+    "AddVehicle.dc.html",
+    "Settings.dc.html",
+    "NavBar.dc.html"
+  ],
+  "pages": [],
+  "title": "EdgeGate App UI Design"
+}

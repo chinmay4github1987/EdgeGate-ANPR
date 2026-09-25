@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; background: #F3F5F8; color: #0F172A; font-family: 'IBM Plex Sans', sans-serif; display: flex; flex-direction: column">
+
+<header style="padding: 12px 12px 8px; display: flex; align-items: center; gap: 4px">
+<a href="Main.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: #0F172A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700">Settings</h1>
+</header>
+
+<div style="padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 20px">
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.6px; color: #4B5565">GATE</h2>
+<div style="background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; overflow: hidden">
+<div style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF1F5; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Gate name</span><span style="font-size: 14px; color: #4B5565">Main Gate</span></div>
+<div style="display: flex; align-items: center; padding: 14px 16px; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Default mode</span><span style="font-size: 14px; color: #4B5565">Entry lane</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.6px; color: #4B5565">AI ENGINE</h2>
+<div style="background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; overflow: hidden">
+<label style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF1F5; gap: 12px"><span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px">Use GPU acceleration</span><span style="font-size: 12px; color: #4B5565">Falls back to CPU if unsupported</span></span><input type="checkbox" role="switch" checked style="width: 22px; height: 22px; accent-color: #0F766E"></label>
+<div style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF1F5; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Detector model</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4B5565">int8 · 3.1 MB</span></div>
+<div style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF1F5; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Frames to confirm</span><span style="font-size: 14px; color: #4B5565">3</span></div>
+<div style="display: flex; align-items: center; padding: 14px 16px; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Repeat cooldown</span><span style="font-size: 14px; color: #4B5565">60 s</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.6px; color: #4B5565">ALERTS</h2>
+<div style="background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; overflow: hidden">
+<label style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF1F5; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Alarm sound on deny</span><input type="checkbox" role="switch" checked style="width: 22px; height: 22px; accent-color: #0F766E"></label>
+<label style="display: flex; align-items: center; padding: 14px 16px; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Confirmation beep on allow</span><input type="checkbox" role="switch" checked style="width: 22px; height: 22px; accent-color: #0F766E"></label>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.6px; color: #4B5565">PRIVACY &amp; DATA</h2>
+<div style="background: #FFFFFF; border: 1px solid #DCE1E8; border-radius: 16px; overflow: hidden">
+<div style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF1F5; gap: 12px"><span style="flex-grow: 1; font-size: 15px">Keep logs for</span><span style="font-size: 14px; color: #4B5565">90 days</span></div>
+<div style="display: flex; align-items: flex-start; padding: 14px 16px; gap: 12px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span style="flex-grow: 1; font-size: 13px; color: #334155; line-height: 1.45">Video never leaves this phone. Only plate text, time and decision are stored. No internet permission.</span></div>
+</div>
+</section>
+
+<span style="font-size: 12px; color: #4B5565; text-align: center">EdgeGate ANPR · v1.1</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
